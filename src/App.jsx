@@ -7,11 +7,16 @@ function App() {
   const [tasks, setTasks] = useState([]);
 
   function addTask(task) {
-    setTasks([...tasks, { ...task, id: Date.now() }]);
+    setTasks((previousTasks) => [
+      ...previousTasks,
+      { ...task, id: Date.now() },
+    ]);
   }
 
   function deleteTask(id) {
-    setTasks(tasks.filter((task) => task.id !== id));
+    setTasks((previousTasks) =>
+      previousTasks.filter((task) => task.id !== id)
+    );
   }
 
   return (
@@ -29,7 +34,9 @@ function App() {
         <section className="tasks-section">
           <div className="section-heading">
             <h2>Your Tasks</h2>
-            <span className="task-count">{tasks.length} tasks</span>
+            <span className="task-count">
+              {tasks.length} {tasks.length === 1 ? "task" : "tasks"}
+            </span>
           </div>
 
           <TaskList

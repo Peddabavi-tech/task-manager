@@ -11,9 +11,11 @@ function TaskCard({ task, onDeleteTask }) {
     <article className="task-card">
       <div className="task-card-content">
         <h3>{task.name}</h3>
+
         <p className="due-date">
           <span>Due date:</span> {formattedDate}
         </p>
+
         <span
           className={`priority priority-${task.priority.toLowerCase()}`}
         >
